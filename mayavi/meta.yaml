@@ -30,20 +30,20 @@ build:
 
 requirements:
   build:
-    - python=2
+    - python >=2.7
     - setuptools
     - apptools
     - traits
     - traitsui
-    - vtk=6
+    - vtk >=6
 
   run:
-    - python=2
+    - pythoni =2.7
     - setuptools
     - apptools
     - traits
     - traitsui
-    - vtk=6
+    - vtk >=6
 
 test:
   # Python imports
