@@ -1,0 +1,107 @@
+package:
+  name: mayavi
+  version: "4.4.3"
+
+source:
+  fn: mayavi-4.4.3.tar.bz2
+  url: https://pypi.python.org/packages/source/m/mayavi/mayavi-4.4.3.tar.bz2
+  md5: 38f0940a7d8336ae438aeaa612a592ce
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mayavi = mayavi:main
+    #
+    # Would create an entry point called mayavi that calls mayavi.main()
+
+    - mayavi2 = mayavi.scripts.mayavi2:main
+    - tvtk_doc = tvtk.tools.tvtk_doc:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python=2
+    - setuptools
+    - apptools
+    - traits
+    - traitsui
+    - vtk=6
+
+  run:
+    - python=2
+    - setuptools
+    - apptools
+    - traits
+    - traitsui
+    - vtk=6
+
+test:
+  # Python imports
+  imports:
+    - mayavi
+    - mayavi.action
+    - mayavi.components
+    - mayavi.components.ui
+    - mayavi.core
+    - mayavi.core.lut
+    - mayavi.core.ui
+    - mayavi.filters
+    - mayavi.modules
+    - mayavi.modules.ui
+    - mayavi.plugins
+    - mayavi.preferences
+    - mayavi.scripts
+    - mayavi.sources
+    - mayavi.sources.ui
+    - mayavi.tests
+    - mayavi.tools
+    - mayavi.tools.data_wizards
+    - tvtk
+    - tvtk.custom
+    - tvtk.pipeline
+    - tvtk.plugins
+    - tvtk.plugins.browser
+    - tvtk.plugins.scene
+    - tvtk.plugins.scene.ui
+    - tvtk.pyface
+    - tvtk.pyface.ui
+    - tvtk.pyface.ui.null
+    - tvtk.pyface.ui.qt4
+    - tvtk.pyface.ui.wx
+    - tvtk.tests
+    - tvtk.tools
+    - tvtk.util
+    - tvtk.view
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mayavi2 --help
+    - tvtk_doc --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://code.enthought.com/projects/mayavi/
+  license: BSD License
+  summary: 'The Mayavi scientific data 3-dimensional visualizer.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
