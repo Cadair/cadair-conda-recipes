@@ -21,10 +21,6 @@ requirements:
   run:
     - python
 
-test:
-  imports:
-    - vtk
-
 about:
   home: http://www.vtk.org/
   license: BSD
